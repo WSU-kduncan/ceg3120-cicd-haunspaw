@@ -1,0 +1,29 @@
+<nav class="navbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 text-white text-xl">
+      <div class="flex-shrink-0">
+        Birds Gone Wild
+      </div>
+      <div class="flex space-x-8">
+        <a routerLink="/" class="hover-link place-content-center">Home</a>
+        <a routerLink="/contact" class="hover-link place-content-center">Contact</a>
+        <a routerLink="/mission" class="hover-link place-content-center">Mission</a>
+
+        <!-- Show Profile link only if user is logged in -->
+        <a *ngIf="currentUser$ | async as user" routerLink="/profile" class="hover-link place-content-center">Profile</a>
+
+        <!-- Show Login button only if user is not logged in -->
+        <button *ngIf="!(currentUser$ | async)" (click)="showModal = true" class="w-full p-2 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg login-button">
+          Login
+        </button>
+
+        <!-- Show Logout button only if user is logged in -->
+        <button *ngIf="currentUser$ | async" (click)="logout()" class="w-full p-2 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg login-button">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<app-auth-modal *ngIf="showModal" (close)="closeModal()"></app-auth-modal>
