@@ -25,14 +25,21 @@ touch Dockerfile
 ```
 docker run -d -p 8080:80 --name angular-container angular-site
 ```
-If the previous steps were correctly followed, http://localhost:8080/ will show the this
+If the previous steps were correctly followed, http://localhost:8080/ will show the this and using the curl command on the port will show the second image
 ![birds.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/birds.png)
-
+![curl.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/curl.png)
 # Working with DockerHub:
 - Go to [Docker Hub](https://hub.docker.com/)
 - Make an account
 - Click make repository, follow the steps to create and then create
 ![repo.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/repo.png)
-- 
-  
+
+- Docker login
+![login.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/login.png)
+
+
+- The following is an example of pushing to dockerhub
+![dockerPush.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerPush.png)
+
+
 - [My Repo](https://hub.docker.com/repository/docker/haunspaw/aunspaw-ceg3120/general)
