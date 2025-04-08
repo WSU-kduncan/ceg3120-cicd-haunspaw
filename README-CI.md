@@ -34,6 +34,16 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 - Click make repository, follow the steps to create and then create
 ![repo.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/repo.png)
 
+- Creating a personal access token
+  - Log in to [DockerHub](https://hub.docker.com/)
+  - Click on Account settings
+  - Navigate to the Security tab
+  - Under Access Tokens, click "New Access Token"
+  - Name the token
+  - Give it the permissions required for the project (Read and Write)
+  - Click Generate
+  - Copy the token and save it 
+
 - Docker login
 ![login.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/login.png)
 
