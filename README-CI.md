@@ -53,3 +53,18 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 
 
 - [My Repo](https://hub.docker.com/repository/docker/haunspaw/aunspaw-ceg3120/general)
+
+
+
+
+
+
+
+
+
+
+
+# Sources
+- https://hub.docker.com/explore
+- chatgpt: how to make a dockerfile with the following criteria
+- https://docs.docker.com/get-started/docker_cheatsheet.pdf
