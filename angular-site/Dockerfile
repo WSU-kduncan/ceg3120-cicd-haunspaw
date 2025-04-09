@@ -1,4 +1,4 @@
-# -------- Stage 1: Build Angular App --------
+# Build Angular App 
 FROM node:18-alpine AS build
 
 WORKDIR /app
@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build -- --configuration production
 
-# -------- Stage 2: Serve Angular App with Nginx --------
+# Serve Angular App with Nginx 
 FROM nginx:alpine
 
 RUN rm -rf /usr/share/nginx/html/*
