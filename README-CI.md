@@ -65,6 +65,6 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 
 
 # Sources
-- https://hub.docker.com/explore
-- chatgpt: how to make a dockerfile with the following criteria
-- https://docs.docker.com/get-started/docker_cheatsheet.pdf
+- https://hub.docker.com/explore (Help with understanding docker hub)
+- chatgpt: how to make a dockerfile with the following criteria (Learned how to make a docker file)
+- https://docs.docker.com/get-started/docker_cheatsheet.pdf (Used for docker commands)
