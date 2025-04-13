@@ -26,6 +26,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./angular-site
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/aunspaw-ceg3120:latest
