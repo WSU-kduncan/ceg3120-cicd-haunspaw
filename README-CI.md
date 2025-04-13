@@ -129,8 +129,11 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
 
 
 ## Testing & Validating
-
-
+- How to test that your workflow did its tasking
+  - Check under the actions tab on the respective github repo and the actions listed should look like the following if successful
+![workFlow.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/workFlow.png)
+- How to verify that the image in DockerHub works when a container is run using the image
+![dockerTestA.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerTestA.png)
 
 
 
