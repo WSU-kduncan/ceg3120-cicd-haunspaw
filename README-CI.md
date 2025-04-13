@@ -1,7 +1,10 @@
 # CI Project Overview
 - Making a docker container that runs the angular site
 
-# Containerizing your Application (How to):
+
+# Part 1 - Docker-ize it
+
+## Containerizing your Application (How to):
 - Go to [Docker](https://www.docker.com/) and pick the download that works best for your machine
 - Follow the installation guide
 - Enable WSL connectivity if you are using wsl for the project
@@ -28,7 +31,7 @@ docker run -d -p 8080:80 --name angular-container angular-site
 If the previous steps were correctly followed, http://localhost:8080/ will show the this and using the curl command on the port will show the second image
 ![birds.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/birds.png)
 ![curl.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/curl.png)
-# Working with DockerHub:
+## Working with DockerHub:
 - Go to [Docker Hub](https://hub.docker.com/)
 - Make an account
 - Click make repository, follow the steps to create and then create
@@ -56,6 +59,38 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 
 
 
+# Part 2 - GitHub Actions and DockerHub
+
+## Configuring GitHub Repository Secrets:
+- To create a Personal Access Token complete the following steps:
+  - Click Account setting while logged into your Docker Hub account
+  - Click Personal Access Tokens
+  - Click generate new token
+  - Provide a name
+  - Chose desired access level (for this project Read & Write)
+  - Generate and copy
+  - Save to secure location
+- How to set repository Secrets for use by GitHub Actions
+  - Follow the following path on the chosen Github Repository
+    - Settings
+    - Secrets and variables
+    - Actions
+    - New repository secret
+  - Once in the repository secrets section add the following secrets (Do not forget to click save after adding the values)
+    - DockerUserName (Your username)
+    - DockerToken (The token from the last section)
+  - The secrets added will allow us to set up Git actions that utilize our docker containers
+
+## CI with GitHub Actions
+- Before we can utilze github actions the following file (and/or directory) or a file similar to it must be created
+```
+mkdir -p .github/workflows
+nano .github/workflows/docker-build-push.yml
+```
+
+
+
+
 
 
 
@@ -68,3 +103,5 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 - https://hub.docker.com/explore (Help with understanding docker hub)
 - chatgpt: how to make a dockerfile with the following criteria (Learned how to make a docker file)
 - https://docs.docker.com/get-started/docker_cheatsheet.pdf (Used for docker commands)
+- https://docs.docker.com/build/ci/github-actions/ (Documentation on git actions with docker)
+- https://github.com/marketplace/actions/build-and-push-docker-images (Used for the contruction of the yml file)
