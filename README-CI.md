@@ -87,8 +87,42 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 mkdir -p .github/workflows
 nano .github/workflows/docker-build-push.yml
 ```
+- Summary of what your workflow does and when it does it (this is added to the yml file)
+  - Comments are there to summarize what the block of code does and can be removed when making the file
+```
+name: Build and Push Docker Image  ## Name of the workflow
 
+on: ## The branch it runs on
+  push:
+    branches:
+      - main
 
+jobs: ## What the workflow does, in this case it builds and pushes the image angular site
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions: ## for this project Read and Write are rquired
+      contents: read
+      packages: write
+
+    steps: ## builds and pushes
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to DockerHub ## logs into Docker hub using the credientals from the github secrets we added
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image ## pushes the change to the docker hub repo
+        uses: docker/build-push-action@v5
+        with:
+          context: ./angular-site
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/DOCKERHUB REPO NAME:latest
+            
+```
 
 
 
