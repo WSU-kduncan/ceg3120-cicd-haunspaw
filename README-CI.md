@@ -77,8 +77,7 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
     - Actions
     - New repository secret
   - Once in the repository secrets section add the following secrets (Do not forget to click save after adding the values)
-    - DockerUserName (Your username)
-    - DockerToken (The token from the last section)
+![secrets.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/secrets.png)
   - The secrets added will allow us to set up Git actions that utilize our docker containers
 
 ## CI with GitHub Actions
