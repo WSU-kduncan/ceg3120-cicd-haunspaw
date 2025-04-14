@@ -55,7 +55,7 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 ![dockerPush.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerPush.png)
 
 
-- [My Repo](https://hub.docker.com/repository/docker/haunspaw/aunspaw-ceg3120/general)
+- [My Repo](https://hub.docker.com/r/haunspaw/aunspaw-ceg3120/tags)
 
 
 
