@@ -148,4 +148,5 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
 - chatgpt: how to make a dockerfile with the following criteria (Learned how to make a docker file)
 - https://docs.docker.com/get-started/docker_cheatsheet.pdf (Used for docker commands)
 - https://docs.docker.com/build/ci/github-actions/ (Documentation on git actions with docker)
+- https://github.com/docker/build-push-action (Used to help create my yml file)
 - https://github.com/marketplace/actions/build-and-push-docker-images (Used for the contruction of the yml file)
