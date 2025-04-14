@@ -8,7 +8,7 @@
 - Go to [Docker](https://www.docker.com/) and pick the download that works best for your machine
 - Follow the installation guide
 - Enable WSL connectivity if you are using wsl for the project
-- Use the follwoing command to make a docker file (make sure the Docker file is in the root of the angular site folder)
+- Use the following command to make a docker file (make sure the Docker file is in the root of the angular site folder)
 ```
 touch Dockerfile
 ```
