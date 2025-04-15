@@ -8,6 +8,7 @@
 - Go to [Docker](https://www.docker.com/) and pick the download that works best for your machine
 - Follow the installation guide
 - Enable WSL connectivity if you are using wsl for the project
+![dockerhubWSL.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerhubWSL.png)
 - Use the following command to make a docker file (make sure the Docker file is in the root of the angular site folder)
 ```
 touch Dockerfile
@@ -86,8 +87,54 @@ If the previous steps were correctly followed, http://localhost:8080/ will show 
 mkdir -p .github/workflows
 nano .github/workflows/docker-build-push.yml
 ```
-- Summary of what your workflow does and when it does it (this is added to the yml file)
-  - Comments are there to summarize what the block of code does and can be removed when making the file
+- Summary of what your workflow does and when it does it (this is added to the yml file, full version is listed at the end of this section)
+- Comments are there to help understand what the block of code does and can be removed when making the file
+```
+name: Build and Push Docker Image  ## Name of the workflow
+
+on: ## The branch it runs on
+  push:
+    branches:
+      - main
+```
+- This section provides the name for the workflow. It then uses the key word ON to define what triggers the workflow in this case the push command. The Branches key word help define what branch the workflow should listen on, in this instance we are using the MAIN branch.
+
+```
+jobs: ## What the workflow does, in this case it builds and pushes the image angular site
+  build-and-push:
+    runs-on: ubuntu-latest
+```
+- Here is the job section which defines what the workflow does and where it occurs. It is programmed to build and push the image (angular-site), it runs using the linked ubuntu enviroment.
+```
+    permissions: ## for this project Read and Write are rquired
+      contents: read
+      packages: write
+
+    steps: ## builds and pushes
+      - name: Checkout code
+        uses: actions/checkout@v4
+```
+- This section clarifies what permissions are needed for the project, in this case Read and Write privileges. It also downloads from the repository to the enviroment. The code is then checked out so the container can be built.
+```
+      - name: Log in to DockerHub ## logs into Docker hub using the credientals from the github secrets we added
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+```
+- This part logins into Docker using the provide login information
+```
+      - name: Build and push Docker image ## pushes the change to the docker hub repo
+        uses: docker/build-push-action@v5
+        with:
+          context: ./angular-site
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/DOCKERHUB REPO NAME:latest
+```          
+- This section pushes the changes to the docker hub repository
+
+## Full workflow file
+
 ```
 name: Build and Push Docker Image  ## Name of the workflow
 
@@ -100,21 +147,21 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
   build-and-push:
     runs-on: ubuntu-latest
 
-    permissions: ## for this project Read and Write are rquired
+    permissions: 
       contents: read
       packages: write
 
-    steps: ## builds and pushes
+    steps: 
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to DockerHub ## logs into Docker hub using the credientals from the github secrets we added
+      - name: Log in to DockerHub 
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Docker image ## pushes the change to the docker hub repo
+      - name: Build and push Docker image 
         uses: docker/build-push-action@v5
         with:
           context: ./angular-site
@@ -122,7 +169,6 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
           tags: ${{ secrets.DOCKER_USERNAME }}/DOCKERHUB REPO NAME:latest
             
 ```
-
 
 - [WorkFlow file](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/.github/workflows/docker-build-push.yml)
 
@@ -132,8 +178,13 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
   - Check under the actions tab on the respective github repo and the actions listed should look like the following if successful
   - Another way is to check the Docker Hub repo which is shown in the second image
 ![workFlow.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/workFlow.png)
+![githubActions.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/githubActions.png)
 ![repoProof2.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/repoProof2.png)
-- How to verify that the image in DockerHub works when a container is run using the image
+- How to verify that the image in DockerHub works when a container is run using the image, use the following command
+```
+docker logs CONTAINER-NAME
+```
+
 ![dockerTestA.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerTestA.png)
 
 
@@ -143,10 +194,74 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
 
 
 # Sources
-- https://hub.docker.com/explore (Help with understanding docker hub)
-- chatgpt: how to make a dockerfile with the following criteria (Learned how to make a docker file)
-- https://docs.docker.com/get-started/docker_cheatsheet.pdf (Used for docker commands)
-- https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/github-actions.md (Used to learn what github actions are)
-- https://docs.docker.com/build/ci/github-actions/ (Documentation on git actions with docker)
-- https://github.com/docker/build-push-action (Used to help create my yml file)
-- https://github.com/marketplace/actions/build-and-push-docker-images (Used for the contruction of the yml file)
+- https://hub.docker.com/explore
+  - This helped me get a better understanding of docker hub
+- chatgpt: generate me a basic node dockerfile
+  - Learned how to make a basic docker file and the using ai to modify it to help meet the requirements of part 1
+```
+# Use the official Node.js LTS base image
+FROM node:18
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json first (for better caching)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install --production
+
+# Copy the rest of your app's source code
+COPY . .
+
+# Expose the port your app runs on (optional, but good practice)
+EXPOSE 3000
+
+# Command to start the app
+CMD ["node", "index.js"]
+```
+Chatgpt: modify to meet the following requirements
+utilizes an appropriate base image with the FROM command
+completes installation of the application software stack with RUN command(s)
+copies the angular-site application to the container with the COPY command
+starts the Angular application when a container is run from the image built with the Dockerfile with the CMD command
+Note: as needed according to your base selection
+use of the EXPOSE command is optional
+```
+# Use an official Node.js LTS base image for building Angular
+FROM node:18-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json (or yarn.lock) first
+COPY angular-site/package*.json ./
+
+# Install Angular CLI globally and app dependencies
+RUN npm install -g @angular/cli && npm install
+
+# Copy the Angular app source code into the container
+COPY angular-site/ .
+
+# Build the Angular app for production
+RUN ng build --configuration=production
+
+# Serve the Angular app using a lightweight web server like nginx
+# First, use a new stage with nginx as the base
+FROM nginx:alpine
+
+# Start nginx when the container runs
+CMD ["nginx", "-g", "daemon off;"]
+```
+I used these two docker files as a starting point and then modified them to better address the points of the project
+
+- https://docs.docker.com/get-started/docker_cheatsheet.pdf
+  - Used for docker commands
+- https://github.com/pattonsgirl/CEG3120/blob/main/CourseNotes/github-actions.md
+  - Used to learn what github actions are
+- https://docs.docker.com/build/ci/github-actions/
+  - Documentation on git actions with docker this helped when making the yml file
+- https://github.com/docker/build-push-action
+  - Used to help create my yml file and bug fix it
+- https://github.com/marketplace/actions/build-and-push-docker-images
+  - Used for the contruction of the yml file
