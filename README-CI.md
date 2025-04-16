@@ -7,6 +7,11 @@
 ## Containerizing your Application (How to):
 - Go to [Docker](https://www.docker.com/) and pick the download that works best for your machine
 - Follow the installation guide
+- Verify the install was successful by running the following command
+```
+docker --version
+```
+![vdocker.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/vdocker.png)
 - Enable WSL connectivity if you are using wsl for the project
 ![dockerhubWSL.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerhubWSL.png)
 - Use the following command to make a docker file (make sure the Docker file is in the root of the angular site folder)
