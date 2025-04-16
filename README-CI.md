@@ -6,7 +6,7 @@
 
 ## Containerizing your Application (How to):
 - Go to [Docker](https://www.docker.com/) and pick the download that works best for your machine
-- Follow the installation guide
+- Follow and answer the prompts to finish the install
 - Verify the install was successful by running the following command
 ```
 docker --version
