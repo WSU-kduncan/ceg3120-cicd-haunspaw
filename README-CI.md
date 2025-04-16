@@ -129,7 +129,7 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
         with:
           context: ./angular-site
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/DOCKERHUB REPO NAME:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/aunspaw-ceg3120:latest
 ```          
 - This section pushes the changes to the docker hub repository
 
@@ -166,7 +166,7 @@ jobs: ## What the workflow does, in this case it builds and pushes the image ang
         with:
           context: ./angular-site
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/DOCKERHUB REPO NAME:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/aunspaw-ceg3120:latest
             
 ```
 
