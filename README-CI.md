@@ -14,6 +14,13 @@
 ## Containerizing your Application (How to):
 - Go to [Docker](https://www.docker.com/) and pick the download that works best for your machine
 - Follow and answer the prompts to finish the install
+- The questions it will ask will vary depending on the version
+- The one that was used for this project was Docker desktop for windows
+- The questions it will ask are in summary
+  - Activate the installer
+  - chose where to save the file
+  - enable either wsl or hypervisor
+  - complete install
 - Verify the install was successful by running the following command
 ```
 docker --version
