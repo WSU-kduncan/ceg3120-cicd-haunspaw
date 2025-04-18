@@ -1,6 +1,13 @@
 # CI Project Overview
-- Making a docker container that runs the angular site
-
+- Making a docker container that runs the angular site, and the image will be pushed to docker hub when the Github actions workflow is triggered
+- The following tools were utilized to accomplish this task
+  - DockerHub: A DockerHub repository was created to save the image in a secure enviroment
+  - Docker: A docker file was used to make the image and container need to run the angular site
+  - Github Actions: These were used to create the workflow needed to accomplish Part 2
+  - Node: This was needed to be able to run the angular site
+  - Ubuntu: Ubuntu was used as the enviroment to successfully utilize Docker, Dockerhub, Node and Github actions
+- [Diagram](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Project4Diagram.pdf) for visual explanation
+- The resources used to complete this lab are found at the bottom of this README
 
 # Part 1 - Docker-ize it
 
@@ -270,3 +277,5 @@ I used these two docker files as a starting point and then modified them to bett
   - Used to help create my yml file and bug fix it
 - https://github.com/marketplace/actions/build-and-push-docker-images
   - Used for the contruction of the yml file
+- https://www.lucidchart.com/pages
+  - This was used to make the project diagram in the project overview
