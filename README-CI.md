@@ -7,6 +7,7 @@
   - Node: This was needed to be able to run the angular site
   - Ubuntu: Ubuntu was used as the enviroment to successfully utilize Docker, Dockerhub, Node and Github actions
 - [Diagram](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Project4Diagram.pdf) for visual explanation
+![Diagram.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/Diagram.png)
 - The resources used to complete this lab are found at the bottom of this README
 
 # Part 1 - Docker-ize it
