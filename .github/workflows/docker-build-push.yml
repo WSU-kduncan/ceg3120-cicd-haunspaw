@@ -2,8 +2,8 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'  # Trigger only on Git tags starting with v, like v1.2.3
 
 jobs:
   build-and-push:
@@ -17,6 +17,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/aunspaw-ceg3120
+          tags: |
+            type=semver,pattern={{major}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{version}}
+            type=raw,value=latest
+
       - name: Log in to DockerHub
         uses: docker/login-action@v3
         with:
@@ -28,4 +39,5 @@ jobs:
         with:
           context: ./angular-site
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/aunspaw-ceg3120:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
