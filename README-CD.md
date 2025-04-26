@@ -100,3 +100,17 @@ jobs:
 
 ## Link to file
 [workflow file](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/.github/workflows/docker-build-push.yml)
+
+
+## Testing & Validating
+
+```
+Q: How to test that your workflow did its tasking
+```
+- Answer, push a tagged commit to github and check the actions tab. It should look like the following
+![Actions2.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/Action2.png)
+
+```
+Q: How to verify that the image in DockerHub works when a container is run using the image
+```
+- Answer, 
