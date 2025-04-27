@@ -13,7 +13,7 @@ git tag -a latest -m "Testing to see if tags properly work"
 
 - How to push a tag in a git repository to GitHub
 ```
-git push origin (tagName)
+git push origin (tag name)
 ```
 - Results of the sucessful use of these commands
 ![tags.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/tags.png)
