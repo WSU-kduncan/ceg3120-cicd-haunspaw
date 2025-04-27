@@ -95,7 +95,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 ```
 
-- The chunk of the yml file builds and pushes the docker image based off he angular site and the tag associated with it
+- This section of the yml file builds and pushes the docker image based off he angular site and the tag associated with it
 
 
 ## Link to file
