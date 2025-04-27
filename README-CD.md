@@ -113,4 +113,9 @@ Q: How to test that your workflow did its tasking
 ```
 Q: How to verify that the image in DockerHub works when a container is run using the image
 ```
-- Answer, 
+- Answer, run the following commands and the result should be the image at http://localhost:8080/.
+```
+docker pull haunspaw/aunspaw-ceg3120:latest
+docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
+```
+![birds.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/birds.png)
