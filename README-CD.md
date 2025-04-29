@@ -161,4 +161,22 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
   command: docker pull username/repository:Tag
   ex:  docker pull haunspaw/aunspaw-ceg3120:latest
   ```
-![ec2ProofImage.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/ec2ProofImage.png)
+  ![ec2ProofImage.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/ec2ProofImage.png)
+  
+  - How to run container from image
+    ```
+    command: docker run [OPTIONS] <image-name>]
+    ex: docker run -it angular-site
+    ex: docker run -d angular-site
+    ```
+    - Differences between (-it) and (-d)
+      - (-it) is best used for testing purposes as it requires manual intervention
+      - (-d) is best for production as these containers can run independenly in the background
+
+    - How to verify that the container is successfully serving the Angular application
+      - validate from container side
+      - validate from host side
+      - validate from an external connection (your physical system)
+
+
+
