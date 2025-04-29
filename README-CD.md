@@ -119,3 +119,26 @@ docker pull haunspaw/aunspaw-ceg3120:latest
 docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
 ```
 ![birds.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/birds.png)
+
+
+# Part 2 - Continuous Deployment
+
+
+- EC2 Instance Details
+  - AMI: Ubuntu
+  - Instance type: t.2medium
+  - Volume size: 30 GB
+  - Security group information:
+    - Allow Access
+      - port 22 (ssh)
+      - port 80 (webhook)
+  - Port 22 and 80 are open to allow for ssh access and allow for the webhook to function correctly
+
+- Docker Setup on OS on the EC2 instance
+  - How to install Docker for OS on the EC2 instance
+    
+  - Additional dependencies based on OS on the EC2 instance
+    
+  - How to confirm Docker is installed and that OS on the EC2 instance can successfully run containers
+
+
