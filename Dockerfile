@@ -1,7 +1,7 @@
 # Build Angular App
 FROM node:18-alpine AS build
 
-WORKDIR /app
+WORKDIR /angular-site
 
 COPY package*.json ./
 RUN npm install
