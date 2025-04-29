@@ -134,11 +134,31 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
       - port 80 (webhook)
   - Port 22 and 80 are open to allow for ssh access and allow for the webhook to function correctly
 
-- Docker Setup on OS on the EC2 instance
-  - How to install Docker for OS on the EC2 instance
+- Docker Setup on OS on the EC2 instance (ubuntu os)
+  - How to install Docker for OS on the EC2 instance (run the following commands)
+  ```
+  sudo apt-get update
+  sudo apt-get install ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  ```
+  -  These commands are used to set up the apt repository docker uses
+  ```
+   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  ```
+  - This command is used to install docker
+  ```
+  docker --version
+  sudo docker run hello-world
+  docker ps -a
+  ```
+  - These commands are used to verify that docker is correctly installed and is operational as well as the ability to run containers
     
-  - Additional dependencies based on OS on the EC2 instance
-    
-  - How to confirm Docker is installed and that OS on the EC2 instance can successfully run containers
-
-
+- Testing on EC2 Instance
+  - How to pull container image from DockerHub repository
+  ```
+  command: docker pull username/repository:Tag
+  ex:  docker pull haunspaw/aunspaw-ceg3120:latest
+  ```
+![ec2ProofImage.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/ec2ProofImage.png)
