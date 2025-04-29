@@ -1,0 +1,50 @@
+.profile-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-info { // style profile info section
+  background: rgba(255,255,255,0.5);
+  position: absolute;
+  right: calc(50% - 300px);
+  top: calc(50% - 250px);
+  padding: 15px;
+  border-radius: 4px;
+  height: 500px;
+  width: 600px;
+  font-size: 18px;
+}
+
+.password {
+  padding: 5px;
+
+}
+
+.title {
+  color: rgb(30, 41, 59);
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.profile-alert {
+  margin-top: auto;
+}
+
+.row { // common reusable row class
+  display: flex;
+  flex-direction: row;
+}
+
+.cta-row {
+  margin-bottom: 15px;
+  position: absolute;
+  bottom: 0;
+  font-size: 16px;
+  opacity: 1;
+  button {
+    background: darkseagreen;
+    padding: 5px;
+    border-radius: 4px;
+    min-width: 135px;
+  }
+}

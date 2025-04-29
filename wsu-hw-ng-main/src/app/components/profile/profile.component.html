@@ -1,0 +1,16 @@
+<div class="flex profile-container">
+  <!-- Background Image -->
+  <div class="flex-grow flex items-center justify-center overflow-hidden max-h-screen">
+    <img ngSrc="../../../assets/duck.jpg" alt="Profile Background" class="object-cover" width="3475" height="4629">
+  </div>
+
+  <div class="profile-info">
+    <span class="row"><div class="title">User:</div> {{currentUser?.username || 'Birdman 1000000'}}</span>
+    <span class="row"><div class="title">Contact:</div> {{currentUser?.email || 'birdguy@birds.net'}}</span>
+    <span class="row"><div class="title">Password:</div>
+      <div *ngIf="!changePassword">{{currentUser?.password || 'hello1234'}}</div>
+      <input class="password" [(ngModel)]="password" *ngIf="changePassword" (keydown.enter)="doChangePassword()" (focusout)="doChangePassword()">
+    </span>
+    <div class="row cta-row"><button (click)="changePassword = !changePassword">{{(changePassword) ? 'Cancel' : 'Change Password'}}</button></div>
+  </div>
+</div>

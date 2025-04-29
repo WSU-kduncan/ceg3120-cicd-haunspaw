@@ -1,0 +1,49 @@
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="relative bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+    <button (click)="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-3xl leading-none focus:outline-none">
+      &times;
+    </button>
+    <h2 class="text-2xl font-semibold mb-4 align-text-center">
+      {{ isRegisterMode ? 'Register' : 'Login' }}
+    </h2>
+
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4" [ngClass]="{'mb-6': hasErrors('username')}">
+        <label for="username" class="block mb-1">Username</label>
+        <input id="username" formControlName="username" type="text" class="w-full p-2 rounded border">
+        <div *ngIf="authForm.get('username')?.invalid && authForm.get('username')?.touched" class="text-red-500 text-sm mt-1">
+          <div *ngIf="authForm.get('username')?.hasError('required')">Username is required.</div>
+          <div *ngIf="authForm.get('username')?.hasError('minlength')">Username must be at least 3 characters long.</div>
+        </div>
+      </div>
+
+      <div class="mb-4" [ngClass]="{'mb-6': hasErrors('password')}">
+        <label for="password" class="block mb-1">Password</label>
+        <input id="password" formControlName="password" type="password" class="w-full p-2 rounded border">
+        <div *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+          <div *ngIf="authForm.get('password')?.hasError('required')">Password is required.</div>
+          <div *ngIf="authForm.get('password')?.hasError('minlength')">Password must be at least 6 characters long.</div>
+        </div>
+      </div>
+
+      <div class="mb-4" *ngIf="isRegisterMode" [ngClass]="{'mb-6': hasErrors('email')}">
+        <label for="email" class="block mb-1">Email</label>
+        <input id="email" formControlName="email" type="email" class="w-full p-2 rounded border">
+        <div *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+          <div *ngIf="authForm.get('email')?.hasError('required')">Email is required.</div>
+          <div *ngIf="authForm.get('email')?.hasError('email')">Email must be a valid email address.</div>
+        </div>
+      </div>
+
+      <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        {{ isRegisterMode ? 'Register' : 'Login' }}
+      </button>
+    </form>
+
+    <div class="mt-4 text-center">
+      <button (click)="toggleMode()" class="text-blue-500 hover:underline">
+        {{ isRegisterMode ? 'Already have an account? Login' : 'Don\'t have an account? Register' }}
+      </button>
+    </div>
+  </div>
+</div>
