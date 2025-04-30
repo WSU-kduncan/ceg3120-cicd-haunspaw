@@ -206,7 +206,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
 
   - Scripting Container Application Refresh
     - [bash script](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/bash.sh)
-    - Don not for get to make it executable using the following command
+    - Do not for get to make it executable using the following command
     ```
     chmod +x bash.sh
     ```
