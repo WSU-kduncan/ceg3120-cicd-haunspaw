@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # === Configuration ===
-IMAGE_NAME="your-dockerhub-username/your-image-name"
-CONTAINER_NAME="your-container-name"
-HOST_PORT=4200
-CONTAINER_PORT=4200
+IMAGE_NAME="haunspaw/aunspaw-ceg3120:latest"
+CONTAINER_NAME="angular-site"
+HOST_PORT=80
+CONTAINER_PORT=80
 
 echo ">>> Pulling latest image: $IMAGE_NAME"
 docker pull $IMAGE_NAME
