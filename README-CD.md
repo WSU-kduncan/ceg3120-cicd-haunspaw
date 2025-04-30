@@ -204,6 +204,10 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - go to the ip address to see if it was properly updated
 
+  - Scripting Container Application Refresh
+ 
+
+
 
 
     
