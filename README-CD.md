@@ -183,6 +183,27 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
       - validate from an external connection (your physical system)
         - enter http://<EC2 Ip address>:80 in search bar
 
+  - Steps to manually refresh the container application if a new image is available on DockerHub
+    - The following command to pull the image 
+    ```
+    command: docker pull username/repository:Tag
+    ex:  docker pull haunspaw/aunspaw-ceg3120:latest
+    ```
+    - Then stop/remove the old container
+    ```
+    docker stop angular-app
+    docker rm angular-app
+    ```
+    - Run container with new image using the following command
+    ```
+    docker run -d -p 80:80 haunspaw/aunspaw-ceg3120:latest
+    ```
+    - Verify its running
+    ```
+    docker ps
+    ```
+    - go to the ip address to see if it was properly updated
 
 
 
+    
