@@ -1,0 +1,23 @@
+[
+  {
+    "id": "deploy",
+    "execute-command": "/home/ubuntu/deploy.sh",
+    "command-working-directory": "/home/ubuntu",
+    "pass-environment-to-command": [
+      {
+        "source": "payload",
+        "name": "repository"
+      }
+    ],
+    "trigger-rule": {
+      "match": {
+        "type": "value",
+        "value": "sha256=${WEB_HOOK_SECRET}",
+        "parameter": {
+          "source": "header",
+          "name": "X-Hub-Signature-256"
+        }
+      }
+    }
+  }
+]
