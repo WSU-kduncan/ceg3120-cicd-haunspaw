@@ -205,9 +205,19 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     - go to the ip address to see if it was properly updated
 
   - Scripting Container Application Refresh
- 
-
-
-
+    - [bash script](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/bash.sh)
+    - Don not for get to make it executable using the following command
+    ```
+    chmod +x bash.sh
+    ```
+    - To run the script use the following
+    ```
+    ./bash.sh
+    ```
+    - To see if it worked use the following commands
+    ```
+    docker ps
+    curl http://localhost:80
+    ```
 
     
