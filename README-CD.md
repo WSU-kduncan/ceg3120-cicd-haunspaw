@@ -147,8 +147,10 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
   - Security group information:
     - Allow Access
       - port 22 (ssh)
-      - port 80 (webhook)
-  - Port 22 and 80 are open to allow for ssh access and allow for the webhook to function correctly
+      - port 80 (ec2)
+      - port 8080 (ec2)
+      - port 9000 (webhook
+  - Port 22, 80, 8080, 9000 are open to allow for ssh access and allow for the webhook to function correctly
 
 - Docker Setup on OS on the EC2 instance (ubuntu os)
   - How to install Docker for OS on the EC2 instance (run the following commands)
@@ -371,4 +373,51 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
       - [result of the docker inspect](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/new/main/Images)
       - [definition file](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/deploy.json)
 
-    
+- Configuring a Payload Sender
+
+  - Justification for selecting GitHub or DockerHub as the payload sender
+      - I chose github because the payload information is more detailed than dockerhubs. This helped immensely with bug fixing.
+        
+  - How to enable your selection to send payloads to the EC2 webhook listener
+    ```
+    # make sure the container is running
+    docker run --rm -d -p  8080:80 haunspaw/aunspaw-ceg3120:latest -n angular-site
+    curl http://<EC2_PUBLIC_IP>:9000
+
+    Complete the following steps
+    1. Go to add webhooks on github (repo / Settings / Webhooks / Add webhook)
+    2. place the following in the url section http://<EC2_PUBLIC_IP>:9000
+    3. under content type select: application/json
+    4. add a secret
+    5. chose push as the event
+    6. click add
+    7. test by using the following command on the ec2 instance: docker logs angular-site
+    ```
+    ![dockerLogs.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerLogs.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
