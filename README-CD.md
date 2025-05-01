@@ -389,7 +389,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     2. place the following in the url section http://<EC2_PUBLIC_IP>:9000
     3. under content type select: application/json
     4. add a secret
-    5. chose push as the event
+    5. chose an event type that will trigger the payload (in this case push)
     6. click add
     7. test by using the following command on the ec2 instance: docker logs angular-site
     ```
