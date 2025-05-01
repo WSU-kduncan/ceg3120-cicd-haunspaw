@@ -1,18 +1,21 @@
 #!/bin/bash
-# do not foget to make it executable chmod +x bash.sh
+
+# === Configuration ===
 IMAGE_NAME="haunspaw/aunspaw-ceg3120:latest"
 CONTAINER_NAME="angular-site"
-HOST_PORT=80
+HOST_PORT=8080
 CONTAINER_PORT=80
 
 echo ">>> Pulling latest image: $IMAGE_NAME"
 docker pull $IMAGE_NAME
 
+# Check if the container is already running
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
   echo ">>> Stopping container: $CONTAINER_NAME"
   docker stop $CONTAINER_NAME
 fi
 
+# Check if the container exists (running or stopped)
 if [ "$(docker ps -aq -f name=$CONTAINER_NAME)" ]; then
   echo ">>> Removing container: $CONTAINER_NAME"
   docker rm $CONTAINER_NAME
