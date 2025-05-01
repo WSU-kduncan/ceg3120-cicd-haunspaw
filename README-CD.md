@@ -395,9 +395,14 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     ![dockerLogs.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerLogs.png)
 
+  - Explain what triggers will send a payload to the EC2 webhook listener
+    - For this project I chose the specific event of workflow (docker-build-push) success to trigger the webhook
 
-
-
+  - How to verify a successful payload delivery
+    - Go to webhooks in github settings
+    - select recent delivery
+    - this allows you to verify if the payload was correctly sent
+![payload.png]() 
 
 
 
