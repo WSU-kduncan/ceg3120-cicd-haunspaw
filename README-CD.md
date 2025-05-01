@@ -404,9 +404,34 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     - this allows you to verify if the payload was correctly sent
 ![payload.png]()
 
-- Configure a webhook Service on EC2 Instance
+- Configure a webhook Service on EC2 Instance (below is the webhook service file)
+```
+#!/bin/bash
 
+payload=$(cat)
+signature=$(echo "$2" | sed 's/^sha256=//')
 
+# Debug: Print raw payload
+echo "Raw payload received:"
+echo "$payload" | jq .
+
+secret="haunspaw"
+generated_signature=$(echo -n "$payload" | openssl dgst -sha256 -hmac "$secret" | sed 's/^.* //')
+
+echo "Received signature: $signature"
+echo "Generated signature: $generated_signature"
+
+if [[ "$signature" != "$generated_signature" ]]; then
+  echo "Signature mismatch. Ignoring request."
+  #exit 1
+fi
+
+echo "Signature matched. Proceeding with deployment."
+
+bash /home/ubuntu/dockerDeploy.sh
+```
+  - [deploy.sh](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/deploy.sh)
+  - The webhook service file reads in a request from github and then verifies the authenticity by comparing the signatures. If they do not match the script exits, if they do match it will then call the dockerDeploy.sh script
 
 
 
