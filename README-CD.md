@@ -60,6 +60,22 @@ jobs:
 - This section downloads the require code to successfully build the container
 
 ```
+  - name: Extract tag name
+        id: vars
+        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+```
+- This section logs into DockerHub and send the tag to the repo
+
+```
       - name: Set up Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -168,7 +184,8 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     command: docker run [OPTIONS] <image-name>]
     ex: docker run -it angular-site
     ex: docker run -d angular-site
-    ex: docker run -d -p 80:80 haunspaw/aunspaw-ceg3120:latest
+    docker run -it --name angular-site -p 80:80 haunspaw/aunspaw-ceg3120:latest
+    docker run -d --name angular-site -p 80:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - Differences between (-it) and (-d)
       - (-it) is best used for testing purposes as it requires manual intervention
@@ -196,7 +213,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - Run container with new image using the following command
     ```
-    docker run -d -p 80:80 haunspaw/aunspaw-ceg3120:latest
+    docker run -d --name angular-site -p 80:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - Verify its running
     ```
@@ -219,5 +236,124 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     docker ps
     curl http://localhost:80
     ```
+  - Configuring a webhook Listener on EC2 Instance
+    - How to install adnanh's webhook to the EC2 instance
+    ```
+    sudo apt-get install webhook
+    ```
+    - How to verify successful installation
+    ```
+    webhook -version
+    ```
+    - Summary of the webhook definition file
+    
+      ```
+      [
+        {
+          "id": "deploy",
+          "execute-command": "/home/ubuntu/deploy.sh",
+          "command-working-directory": "/home/ubuntu",
+          "pass-arguments-to-command": [
+            {
+              "source": "entire-payload"
+            },
+            {
+              "source": "header",
+              "name": "X-Hub-Signature-256"
+            }
+          ],
+      
+      ```
+      - This section contains the name of the webhook, what script that will be executed when the webhook is triggered and what arguments are passed to the script. It also contains the http header used for the GitHub request.
+      
+      
+      ```
+          "trigger-rule": {
+            "and": [
+              {
+                "match": {
+                  "type": "value",
+                  "value": "push",
+                  "parameter": {
+                    "source": "header",
+                    "name": "X-GitHub-Event"
+                  }
+                }
+              },
+      ```
+      - This is the trigger rule that activates when the HTTP request from GitHub has the value of push. Which means when a push event happens the webhook starts.
+      
+      ```
+              {
+                "match": {
+                  "type": "payload-hmac-sha256",
+                  "secret": "haunspaw",
+                  "parameter": {
+                    "source": "header",
+                    "name": "X-Hub-Signature-256"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+      ```
+      - This section is the security check for the webhook to make sure the request is the correct one. It does this by comparing the hash of the payload using the secret and the hash from the signature sent by GitHub.
+      
+      - The full file is below
+    ```
+    [
+    {
+      "id": "deploy",
+      "execute-command": "/home/ubuntu/deploy.sh",
+      "command-working-directory": "/home/ubuntu",
+      "pass-arguments-to-command": [
+        {
+          "source": "entire-payload"
+        },
+        {
+          "source": "header",
+          "name": "X-Hub-Signature-256"
+        }
+      ],
+      "trigger-rule": {
+        "and": [
+          {
+            "match": {
+              "type": "value",
+              "value": "push",
+              "parameter": {
+                "source": "header",
+                "name": "X-GitHub-Event"
+              }
+            }
+          },
+          {
+            "match": {
+              "type": "payload-hmac-sha256",
+              "secret": "haunspaw",
+              "parameter": {
+                "source": "header",
+                "name": "X-Hub-Signature-256"
+              }
+            }
+          }
+        ]
+      }
+    }
+  
+    ]
+    ```
+    - How to verify definition file was loaded by webhook
+    ```
+
+    ```
+
+
+
+
+
+
 
     
