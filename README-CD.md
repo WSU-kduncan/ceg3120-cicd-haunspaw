@@ -352,9 +352,23 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     ![webHookVerify.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/webHookVerify.png)
     
-    
-
-
-
+    - How to verify webhook is receiving payloads that trigger it
+      - how to monitor logs from running webhook
+      ```
+      docker logs container-name
+      ```
+      ![dockerLogs.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerLogs.png)
+      - what to look for in docker process views
+          - Status
+          - ports
+          - command
+          - image
+      - A command to help is
+      ```
+      command: docker inspect container-name
+      ex: docker inspect angular-site
+      ```
+      - [result of the docker inspect](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/new/main/Images)
+      - [definition file](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/deploy.json)
 
     
