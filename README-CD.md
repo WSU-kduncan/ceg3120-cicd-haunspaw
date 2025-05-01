@@ -347,7 +347,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - How to verify definition file was loaded by webhook
     ```
-
+    webhook -hooks deploy.json -verbose -port 9000
     ```
 
 
