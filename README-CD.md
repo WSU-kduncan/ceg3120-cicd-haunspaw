@@ -498,7 +498,12 @@ https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries
 https://docs.github.com/en/webhooks/about-webhooks
 
 ### AI usage
-- The following 
+- The following prompts were used to help with my understanding of this project. I took notes from both the previous mentioned resources and the chat generations to help in my development of my webhook and docker files
+  - chatgpt: examples of a docker pull script
+  - chatgpt: example of a example of a hook definition file
+  - chatgpt: example of a webhook services file for github
+
+
 
 
 
