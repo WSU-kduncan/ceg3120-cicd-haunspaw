@@ -430,13 +430,69 @@ echo "Signature matched. Proceeding with deployment."
 
 bash /home/ubuntu/dockerDeploy.sh
 ```
-  - [deploy.sh](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/deploy.sh)
   - The webhook service file reads in a request from github and then verifies the authenticity by comparing the signatures. If they do not match the script exits, if they do match it will then call the dockerDeploy.sh script
 
 
+  - To start the webhook service use the next command
+  ```
+  command: webhook -hooks service-file -verbose -port portnumber
+  ex: webhook -hooks deploy.json -verbose -port 9000
+  ```
+  ![webHookVerify](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/webHookVerify.png)
+
+  - How to verify webhook service is capturing payloads and triggering bash script
+    - need to do
+
+  - [deploy.sh](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/deploy.sh)
 
 
 
+
+# Part 3 - Project Description & Diagram
+
+  - Continuous Deployment Project Overview
+    - The goal of this project is to add version control and webhook capabilities to Project 4. Project 4's goal was to docker container that runs the angular site, and the image will be pushed to docker hub when the Github actions workflow is triggered
+
+  - The following tools were utilized to accomplish this task
+    - DockerHub: A DockerHub repository was created to save the image in a secure enviroment
+    - Docker: A docker file was used to make the image and container need to run the angular site
+    - Github Actions: These were used to create the workflow needed to accomplish Part 2
+    - Node: This was needed to be able to run the angular site
+    - Ubuntu: Ubuntu was used as the enviroment to successfully utilize Docker, Dockerhub, Node and Github actions
+    - EC2 instance: This was made by using AWS this allowed for github webhooks to have somewhere to send the payload
+    - Webhooks: webhooks were integrated using [adnanh webhooks](https://github.com/adnanh/webhook). These allowed for the docker images and containers to be pulled to the EC2 instance.
+
+### Diagram of the project
+![P5_Diagram.pdf](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/P5_Diagram.pdf)
+
+
+## Resources
+
+https://github.com/docker/metadata-action 
+
+https://github.com/docker/metadata-action#tags-input
+
+https://github.com/docker/build-push-action
+
+https://github.com/docker/build-push-action#usage
+
+https://github.com/docker/login-action
+
+https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onevent_nametypes
+
+https://docs.docker.com/engine/reference/commandline/run/
+
+https://docs.docker.com/get-started/
+
+https://docs.docker.com/engine/install/ubuntu/
+
+https://docs.docker.com/reference/cli/docker/container/update/
+
+https://github.com/adnanh/webhook
+
+https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries
+
+https://docs.github.com/en/webhooks/about-webhooks
 
 
 
