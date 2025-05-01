@@ -1,0 +1,233 @@
+[
+    {
+        "Id": "34c2beab668d764e3c25c5bdf8f20f9808c93c64e9b31fbf670d789d668da14f",
+        "Created": "2025-05-01T13:46:51.53508601Z",
+        "Path": "/docker-entrypoint.sh",
+        "Args": [
+            "nginx",
+            "-g",
+            "daemon off;"
+        ],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-05-01T13:46:51.609779418Z",
+            "FinishedAt": "2025-05-01T13:48:38.868713866Z"
+        },
+        "Image": "sha256:79cb63ae714fe0845755add5a86f552fd6ef690487df3c46f21e6d92e1601213",
+        "ResolvConfPath": "/var/lib/docker/containers/34c2beab668d764e3c25c5bdf8f20f9808c93c64e9b31fbf670d789d668da14f/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/34c2beab668d764e3c25c5bdf8f20f9808c93c64e9b31fbf670d789d668da14f/hostname",
+        "HostsPath": "/var/lib/docker/containers/34c2beab668d764e3c25c5bdf8f20f9808c93c64e9b31fbf670d789d668da14f/hosts",
+        "LogPath": "/var/lib/docker/containers/34c2beab668d764e3c25c5bdf8f20f9808c93c64e9b31fbf670d789d668da14f/34c2beab668d764e3c25c5bdf8f20f9808c93c64e9b31fbf670d789d668da14f-json.log",
+        "Name": "/angular-site",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                48,
+                157
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "34c2beab668d764e3c25c5bdf8f20f9808c93c64e9b31fbf670d789d668da14f",
+                "LowerDir": "/var/lib/docker/overlay2/a6476bd7405b3d74bdcef805ac800acfc9e25480f22544324c5cafc7177be512-init/diff:/var/lib/docker/overlay2/26cf60dcb7291b0cd061500a19844739317066cab0ce28a314a868ebd39ec98b/diff:/var/lib/docker/overlay2/7edac75f5e5e7ead9873931bf1b8068f5d4ed13b1c612ccca548106d796f17fb/diff:/var/lib/docker/overlay2/e9b2d0b33d4a7009a30dd7b4675f4610b70438283d52b0d7eae37ce7bace5b04/diff:/var/lib/docker/overlay2/2ad964dd683ec782fcadaa92d3acc716cc4d64a37caa546c6a5f68417c07116f/diff:/var/lib/docker/overlay2/b2118c6563d7eba0eb6e3eebd4f05a7993d6447bd237ff8541548295b4127db5/diff:/var/lib/docker/overlay2/51d9c734eb9c88ecedc00be4ef2b4e9fe0e9a4ad15ca694aff4d77d0208df22b/diff:/var/lib/docker/overlay2/51a7d9434fc90ffc09e0f912146caa05a511c9523f8cc1448d87384ab6876414/diff:/var/lib/docker/overlay2/015afc3eee4e8448a772a68c38994a27a76aa5301ac61b00815ea1a1968238a8/diff:/var/lib/docker/overlay2/e9e117daee0fc4e09f127a547914661552fa5075ef83809f5f3128e1d07bd959/diff:/var/lib/docker/overlay2/2d3e795ee2f06bd46be3b0d3224f3a553950028e00180e2800ef50efca84eff8/diff",
+                "MergedDir": "/var/lib/docker/overlay2/a6476bd7405b3d74bdcef805ac800acfc9e25480f22544324c5cafc7177be512/merged",
+                "UpperDir": "/var/lib/docker/overlay2/a6476bd7405b3d74bdcef805ac800acfc9e25480f22544324c5cafc7177be512/diff",
+                "WorkDir": "/var/lib/docker/overlay2/a6476bd7405b3d74bdcef805ac800acfc9e25480f22544324c5cafc7177be512/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "34c2beab668d",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.27.5",
+                "PKG_RELEASE=1",
+                "DYNPKG_RELEASE=1",
+                "NJS_VERSION=0.8.10",
+                "NJS_RELEASE=1"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Image": "haunspaw/aunspaw-ceg3120:latest",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>",
+                "org.opencontainers.image.created": "2025-05-01T02:35:13.617Z",
+                "org.opencontainers.image.description": "ceg3120-cicd-haunspaw created by GitHub Classroom",
+                "org.opencontainers.image.licenses": "",
+                "org.opencontainers.image.revision": "aa33d772e0c94b83cbe51955772e089fb0f0f7e4",
+                "org.opencontainers.image.source": "https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw",
+                "org.opencontainers.image.title": "ceg3120-cicd-haunspaw",
+                "org.opencontainers.image.url": "https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw",
+                "org.opencontainers.image.version": "latest"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "bb2792a018f9440a32a93d108893b7162936dd85ac9f61f4785b63ba4bbc82c1",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        }
+    }
+]
