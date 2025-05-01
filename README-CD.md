@@ -468,18 +468,19 @@ bash /home/ubuntu/dockerDeploy.sh
 
 ## Resources
 
-https://github.com/docker/metadata-action 
+https://github.com/docker/metadata-action (This was used to help integrate the docker metadata action for the yml file)
 
-https://github.com/docker/metadata-action#tags-input
+https://github.com/docker/metadata-action#tags-input ( used to better understand tags)
 
-https://github.com/docker/build-push-action
+https://github.com/docker/build-push-action (helped with bug fixing the yml file)
 
-https://github.com/docker/build-push-action#usage
+https://github.com/docker/build-push-action#usage (helped with bug fixing the yml file)
 
-https://github.com/docker/login-action
+https://github.com/docker/login-action (docker login command for various scripts and the yml file)
 
-https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onevent_nametypes
+https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onevent_nametypes (used to help with the github actions workflow)
 
+- ( The links below were used to help me better understand/use docker images and containers )
 https://docs.docker.com/engine/reference/commandline/run/
 
 https://docs.docker.com/get-started/
@@ -488,15 +489,16 @@ https://docs.docker.com/engine/install/ubuntu/
 
 https://docs.docker.com/reference/cli/docker/container/update/
 
+- ( The links below were used to help with the webhook files )
+
 https://github.com/adnanh/webhook
 
 https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries
 
 https://docs.github.com/en/webhooks/about-webhooks
 
-
-
-
+### AI usage
+- The following 
 
 
 
