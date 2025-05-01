@@ -402,7 +402,9 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     - Go to webhooks in github settings
     - select recent delivery
     - this allows you to verify if the payload was correctly sent
-![payload.png]() 
+![payload.png]()
+
+- Configure a webhook Service on EC2 Instance
 
 
 
