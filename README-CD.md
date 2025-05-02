@@ -472,7 +472,12 @@ bash /home/ubuntu/dockerDeploy.sh
   ![webHookVerify](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/webHookVerify.png)
 
   - How to verify webhook service is capturing payloads and triggering bash script
-    - need to do
+    ```
+    webhook -hooks deploy.json -verbose -port 9000
+    ```
+    - if the webhook service works near the end of the logs the following will be present 
+    ![dockerV2.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/dockerV2.png)
+
 
   - [deploy.sh](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/deploy.sh)
 
