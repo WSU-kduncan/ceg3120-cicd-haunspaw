@@ -501,7 +501,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     - this allows you to verify if the payload was correctly sent
 ![workPayload.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/workPayload.png)
 
-- Configure a webhook Service on EC2 Instance 
+- Configure a webhook Service on EC2 Instance (below is the listener)
 ```
 #!/bin/bash
 
@@ -532,8 +532,8 @@ bash /home/ubuntu/dockerDeploy.sh
 
   - To start the webhook service use the next command
   ```
-  command: webhook -hooks service-file -verbose -port portnumber
-  ex: webhook -hooks deploy.json -verbose -port 9000
+  sudo systemctl enable webhook.service
+  sudo systemctl status webhook.service
   ```
   ![webHookVerify](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/webHookVerify.png)
 
