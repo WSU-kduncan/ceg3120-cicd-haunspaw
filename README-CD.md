@@ -149,7 +149,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
       - port 22 (ssh)
       - port 80 (ec2)
       - port 8080 (ec2)
-      - port 9000 (webhook
+      - port 9000 (webhook)
   - Port 22, 80, 8080, 9000 are open to allow for ssh access and allow for the webhook to function correctly
 
 - Docker Setup on OS on the EC2 instance (ubuntu os)
@@ -195,12 +195,12 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
 
     - How to verify that the container is successfully serving the Angular application
       - validate from container side
-        - curl http://localhost:80
+        - curl http://localhost:8080
       - validate from host side
-        - curl http://localhost:80 
-        - go to http://localhost:80
+        - curl http://localhost:8080
+        - go to http://localhost:8080
       - validate from an external connection (your physical system)
-        - enter http://<EC2 Ip address>:80 in search bar
+        - enter http://<EC2 Ip address>:8080 in search bar
 
   - Steps to manually refresh the container application if a new image is available on DockerHub
     - The following command to pull the image 
@@ -215,7 +215,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - Run container with new image using the following command
     ```
-    docker run -d --name angular-site -p 80:80 haunspaw/aunspaw-ceg3120:latest
+    docker run -d --name angular-site -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - Verify its running
     ```
