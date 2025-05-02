@@ -17,7 +17,7 @@
         {
           "match": {
             "type": "value",
-            "value": "push",
+            "value": "workflow_run",
             "parameter": {
               "source": "header",
               "name": "X-GitHub-Event"
@@ -31,6 +31,26 @@
             "parameter": {
               "source": "header",
               "name": "X-Hub-Signature-256"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "completed",
+            "parameter": {
+              "source": "payload",
+              "name": "action"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "Build and Push Docker Image",
+            "parameter": {
+              "source": "payload",
+              "name": "workflow_run.name"
             }
           }
         }
