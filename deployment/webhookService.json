@@ -1,7 +1,7 @@
 [
   {
     "id": "deploy",
-    "execute-command": "/home/ubuntu/deploy.sh",
+    "execute-command": "/home/ubuntu/hookDefinition.sh",
     "command-working-directory": "/home/ubuntu",
     "pass-arguments-to-command": [
       {
