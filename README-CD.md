@@ -21,7 +21,7 @@ git push origin (tag name)
 
 ## Summary of workflow
 
-- The workflow triggers when a tag is pushed, the workflow then builds the container using the ubuntu enviroment. The container is used to run the angular site, the code is download from the repository so the angular site can be correctly ran. This container is saved to the docker hub repo called aunspaw-ceg3120, which is accessed by using the log in info that is saved to the github secrets called DOCKER_USERNAME and DOCKERHUB_TOKEN.
+- The workflow triggers when a semver tag is pushed, the workflow then builds the container using the ubuntu enviroment. The container is used to run the angular site, the code is download from the repository so the angular site can be correctly ran. This container is saved to the docker hub repo called aunspaw-ceg3120, which is accessed by using the log in info that is saved to the github secrets called DOCKER_USERNAME and DOCKERHUB_TOKEN.
 
 
 ## Steps of the yml file
