@@ -188,8 +188,8 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     command: docker run [OPTIONS] <image-name>]
     ex: docker run -it angular-site
     ex: docker run -d angular-site
-    docker run -it --name angular-site -p 80:80 haunspaw/aunspaw-ceg3120:latest
-    docker run -d --name angular-site -p 80:80 haunspaw/aunspaw-ceg3120:latest
+    docker run -it --name angular-site -p 8080:80 haunspaw/aunspaw-ceg3120:latest
+    docker run -d --name angular-site -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     ```
     - Differences between (-it) and (-d)
       - (-it) is best used for testing purposes as it requires manual intervention
