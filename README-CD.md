@@ -225,7 +225,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
 
   - Scripting Container Application Refresh
     - [bash script](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/deployment/bash.sh)
-    - Do not for get to make it executable using the following command
+    - Do not forget to make it executable using the following command
     ```
     chmod +x bash.sh
     ```
@@ -402,7 +402,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     - Go to webhooks in github settings
     - select recent delivery
     - this allows you to verify if the payload was correctly sent
-![payload.png]()
+![workPayload.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/workPayload.png)
 
 - Configure a webhook Service on EC2 Instance (below is the webhook service file)
 ```
