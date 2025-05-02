@@ -3,7 +3,7 @@ Description=Webhook Listener Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/webhook -hooks /home/ubuntu/webhooklisten.json -verbose -ip http://3.217.116.41/ -port 9000
+ExecStart=/usr/local/bin/webhook -hooks /home/ubuntu/webhooklisten.json -verbose -ip 0.0.0.0 -port 9000
 WorkingDirectory=/home/ubuntu
 User=ubuntu
 Restart=always
