@@ -251,81 +251,31 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     - Summary of the webhook definition file
     
       ```
-      [
-        {
-          "id": "deploy",
-          "execute-command": "/home/ubuntu/deploy.sh",
-          "command-working-directory": "/home/ubuntu",
-          "pass-arguments-to-command": [
-            {
-              "source": "entire-payload"
-            },
-            {
-              "source": "header",
-              "name": "X-Hub-Signature-256"
-            }
-          ],
-      
+       [
+      {
+        "id": "deploy",
+        "execute-command": "/home/ubuntu/deploy.sh",
+        "command-working-directory": "/home/ubuntu",
+        "pass-arguments-to-command": [
+          {
+            "source": "entire-payload"
+          },
+          {
+            "source": "header",
+            "name": "X-Hub-Signature-256"
+          }
+        ],
       ```
       - This section contains the name of the webhook, what script that will be executed when the webhook is triggered and what arguments are passed to the script. It also contains the http header used for the GitHub request.
       
       
       ```
           "trigger-rule": {
-            "and": [
-              {
-                "match": {
-                  "type": "value",
-                  "value": "push",
-                  "parameter": {
-                    "source": "header",
-                    "name": "X-GitHub-Event"
-                  }
-                }
-              },
-      ```
-      - This is the trigger rule that activates when the HTTP request from GitHub has the value of push. Which means when a push event happens the webhook starts.
-      
-      ```
-              {
-                "match": {
-                  "type": "payload-hmac-sha256",
-                  "secret": "haunspaw",
-                  "parameter": {
-                    "source": "header",
-                    "name": "X-Hub-Signature-256"
-                  }
-                }
-              }
-            ]
-          }
-        }
-      ]
-      ```
-      - This section is the security check for the webhook to make sure the request is the correct one. It does this by comparing the hash of the payload using the secret and the hash from the signature sent by GitHub.
-      
-      - The full file is below
-    ```
-    [
-    {
-      "id": "deploy",
-      "execute-command": "/home/ubuntu/deploy.sh",
-      "command-working-directory": "/home/ubuntu",
-      "pass-arguments-to-command": [
-        {
-          "source": "entire-payload"
-        },
-        {
-          "source": "header",
-          "name": "X-Hub-Signature-256"
-        }
-      ],
-      "trigger-rule": {
         "and": [
           {
             "match": {
               "type": "value",
-              "value": "push",
+              "value": "workflow_run",
               "parameter": {
                 "source": "header",
                 "name": "X-GitHub-Event"
@@ -333,19 +283,100 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
             }
           },
           {
-            "match": {
-              "type": "payload-hmac-sha256",
-              "secret": "haunspaw",
-              "parameter": {
-                "source": "header",
-                "name": "X-Hub-Signature-256"
+      ```
+      - This is the trigger rule that activates when the HTTP request from GitHub has the value of a github action completion. Which means when a github action event happens the webhook starts.
+      
+      ```
+              "match": {
+                "type": "payload-hmac-sha256",
+                "secret": "haunspaw",
+                "parameter": {
+                  "source": "header",
+                  "name": "X-Hub-Signature-256"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "value",
+                "value": "completed",
+                "parameter": {
+                  "source": "payload",
+                  "name": "action"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "value",
+                "value": "Build and Push Docker Image",
+                "parameter": {
+                  "source": "payload",
+                  "name": "workflow_run.name"
+      ```
+      - This section is the security check for the webhook to make sure the request is the correct one. It does this by comparing the hash of the payload using the secret and the hash from the signature sent by GitHub.
+      
+      - The full file is below
+    ```
+       [
+      {
+        "id": "deploy",
+        "execute-command": "/home/ubuntu/deploy.sh",
+        "command-working-directory": "/home/ubuntu",
+        "pass-arguments-to-command": [
+          {
+            "source": "entire-payload"
+          },
+          {
+            "source": "header",
+            "name": "X-Hub-Signature-256"
+          }
+        ],
+        "trigger-rule": {
+          "and": [
+            {
+              "match": {
+                "type": "value",
+                "value": "workflow_run",
+                "parameter": {
+                  "source": "header",
+                  "name": "X-GitHub-Event"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "payload-hmac-sha256",
+                "secret": "haunspaw",
+                "parameter": {
+                  "source": "header",
+                  "name": "X-Hub-Signature-256"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "value",
+                "value": "completed",
+                "parameter": {
+                  "source": "payload",
+                  "name": "action"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "value",
+                "value": "Build and Push Docker Image",
+                "parameter": {
+                  "source": "payload",
+                  "name": "workflow_run.name"
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       }
-    }
-  
     ]
     ```
     - How to verify definition file was loaded by webhook
