@@ -412,6 +412,70 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
       - I chose github because the payload information is more detailed than dockerhubs. This helped immensely with bug fixing.
         
   - How to enable your selection to send payloads to the EC2 webhook listener
+
+    - listener file
+    ```
+        [
+      {
+        "id": "deploy",
+        "execute-command": "/home/ubuntu/hookDefinition.sh",
+        "command-working-directory": "/home/ubuntu",
+        "pass-arguments-to-command": [
+          {
+            "source": "entire-payload"
+          },
+          {
+            "source": "header",
+            "name": "X-Hub-Signature-256"
+          }
+        ],
+        "trigger-rule": {
+          "and": [
+            {
+              "match": {
+                "type": "value",
+                "value": "workflow_run",
+                "parameter": {
+                  "source": "header",
+                  "name": "X-GitHub-Event"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "payload-hmac-sha256",
+                "secret": "haunspaw",
+                "parameter": {
+                  "source": "header",
+                  "name": "X-Hub-Signature-256"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "value",
+                "value": "completed",
+                "parameter": {
+                  "source": "payload",
+                  "name": "action"
+                }
+              }
+            },
+            {
+              "match": {
+                "type": "value",
+                "value": "Build and Push Docker Image",
+                "parameter": {
+                  "source": "payload",
+                  "name": "workflow_run.name"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+    ```
     ```
     # make sure the container is running
     docker run --rm -d -p  8080:80 haunspaw/aunspaw-ceg3120:latest -n angular-site
@@ -463,7 +527,7 @@ echo "Signature matched. Proceeding with deployment."
 
 bash /home/ubuntu/dockerDeploy.sh
 ```
-  - The webhook service file reads in a request from github and then verifies the authenticity by comparing the signatures. If they do not match the script exits, if they do match it will then call the dockerDeploy.sh script
+  - The webhook service file atcivates the webhooklisten.json file that reads in a request from github and then verifies the authenticity by comparing the signatures. If they do not match the script exits, if they do match it will then call the dockerDeploy.sh script
 
 
   - To start the webhook service use the next command
