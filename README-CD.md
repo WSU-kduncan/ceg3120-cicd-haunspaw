@@ -437,7 +437,7 @@ docker run --rm -p 8080:80 haunspaw/aunspaw-ceg3120:latest
     - this allows you to verify if the payload was correctly sent
 ![workPayload.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/workPayload.png)
 
-- Configure a webhook Service on EC2 Instance (below is the webhook service file)
+- Configure a webhook Service on EC2 Instance 
 ```
 #!/bin/bash
 
