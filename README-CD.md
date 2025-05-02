@@ -16,7 +16,7 @@ git tag -a latest -m "Testing to see if tags properly work"
 git push origin (tag name)
 ```
 - Results of the sucessful use of these commands
-![tags.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/tags.png)
+![tagFinal.png](https://github.com/WSU-kduncan/ceg3120-cicd-haunspaw/blob/main/Images/tagFinal.png)
 ## Semantic Versioning Container Images with GitHub Actions
 
 ## Summary of workflow
