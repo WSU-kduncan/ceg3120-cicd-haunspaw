@@ -32,10 +32,12 @@ name: Build and Push Docker Image
 on:
   push:
     tags:
-      - '*'  
+      - "latest"
+      - "[0-9]+"
+      - "[0-9]+.[0-9]+"
 ```
 
-- This block contains the name of the work flow aswell as what actions trigger the workflow. The work flow triggers when a tag is pushed 
+- This block contains the name of the work flow aswell as what actions trigger the workflow. The work flow triggers when a semver tag is pushed any other tag will not trigger the workflow
 
 
 
